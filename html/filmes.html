@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>NevesFlix</title>
+  <link rel="stylesheet" href="../styles/filmes.css" />
+  <link href="https://fonts.cdnfonts.com/css/netflix-font" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.0/dist/pouchdb.min.js"></script>
+  <script src="../scripts/script.js"></script>
+  <script src="../scripts/filmes.js" defer></script>
+</head>
+
+<body>
+  <nav class="navbar">
+    <a href="filmes.html"><img src="../styles/imagens/logobranca.png" alt="Logo"></a>
+    <ul class="nav-menu">
+      <li id="navUsuarios"><a href="usuarios.html">Administrador</a>
+      <div class="container-search">
+        <li><label for="categoria">Filtrar por Categoria:</label></li>
+        <li><select id="categoria" onchange="filtrarFilmes()"></li>
+          <option value="todas">Todas</option>
+          <option value="Ficção Científica">Ficção Científica</option>
+          <option value="Ação">Ação</option>
+          <option value="Drama">Drama</option>
+          <option value="Crime">Crime</option>
+          <option value="Romance">Romance</option>
+          <option value="Fantasia">Fantasia</option>
+          <option value="Suspense">Suspense</option>
+          <option value="Aventura">Aventura</option>
+        </select>
+        <input type="search" id="pesquisa" placeholder="Digite sua pesquisa..." />
+      </div>
+      </li>
+    </ul>
+  </nav>
+
+
+  <div class="movies-container">
+
+  </div>
+
+  </div>
+  </div>
+</body>
+
+</html>

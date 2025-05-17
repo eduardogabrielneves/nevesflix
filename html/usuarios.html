@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualizar Usuários - PouchDB</title>
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+  <script src="../scripts/usuarios.js" defer></script>
+  <link rel="stylesheet" href="../styles/usuarios.css" />
+</head>     
+<body>
+
+  <h1>Usuários Cadastrados</h1>
+
+  <form id="formCadastro" style="margin-bottom:20px;">
+    <input type="text" id="inputUsuario" placeholder="Usuário" required />
+    <input type="password" id="inputSenha" placeholder="Senha" required />
+    <select id="inputPlano">
+      <option value="">Selecione plano</option>
+      <option value="Básico">Básico</option>
+      <option value="Intermediário">Intermediário</option>
+      <option value="Premium">Premium</option>
+    </select>
+    <button type="submit">Cadastrar Usuário</button>
+  </form>
+
+  <table id="usuariosTable">
+    <thead>
+      <tr>
+        <th>Usuário (ID)</th>
+        <th>Senha</th>
+        <th>Plano</th>
+        <th>Admin</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+</body>
+</html>

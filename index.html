@@ -6,6 +6,8 @@
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="styles/imagens/icone.png">
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+    <script src="scripts/login.js" defer></script>
 </head>
 <body>
     <div id="login-container">
@@ -13,8 +15,8 @@
         <form>
             <input type="text" placeholder="Usuário" required>
             <input type="password" placeholder="Senha" required>
-            <button type="submit" class="btn-login"><a style="text-decoration: none; color: white;" href="html/home.html">Entrar</a></button>
-            <p id="semconta">Não tem conta? <a href="">Criar conta</a></p>
+            <button type="submit" class="btn-login">Entrar</button>
+            <p id="semconta">Não tem conta? <a href="html/cadastro.html">Criar conta</a></p>
         </form>
     </div>
 </body>

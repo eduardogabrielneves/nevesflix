@@ -1,0 +1,130 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav ul li {
+    margin-right: 20px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+form#formCadastro {
+    margin: 40px auto 20px;
+    max-width: 700px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+form#formCadastro input,
+form#formCadastro select {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 2px solid #888;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    flex-grow: 1;
+    min-width: 150px;
+    transition: all 0.3s ease;
+}
+
+form#formCadastro input:focus,
+form#formCadastro select:focus {
+    border-color: #ff0000;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+    background-color: #444;
+}
+
+form#formCadastro button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+
+form#formCadastro button:hover {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.7);
+}
+
+table {
+    width: 90%;
+    margin: 0 auto 50px;
+    border-collapse: collapse;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #444;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #1c1c1c;
+}
+
+tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff4d4d;
+    box-shadow: 0 0 10px 3px rgba(255, 0, 0, 0.8);
+}
