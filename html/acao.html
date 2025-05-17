@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+    <script src="../scripts/home.js"></script>
+    <title>Filmes de Ação</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html"><img src="../styles/imagens/logobranca.png" alt="Logo"></a>
+        <ul class="nav-menu">
+            <li><a href="acao.html">Ação</a></li>
+            <li><a href="comedia.html">Comédia</a></li>
+            <li><a href="drama.html">Drama</a></li>
+            <li><a href="terror.html">Terror</a></li>
+        </ul>
+        <input type="text" id="searchInput" placeholder="Pesquisar filmes..." onkeyup="filterMovies()">
+    </nav>
+
+    <div id="section1">
+        <div><h1 id="titulo">Filmes de Ação</h1></div>
+    
+        <div class="movies-container">
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/original/fGiLNTHbDyNIY3Fvo96A836UpIy.jpg" alt="Velozes & Furiosos 1">
+                <div class="movie-info">
+                    <h3>Velozes & Furiosos 1</h3>
+                    <p>Um policial disfarçado se infiltra em um grupo de corredores de rua liderado por Dominic Toretto, suspeito de crimes. O filme mistura corridas, ação e dilemas de lealdade.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/1Gu1IzSzlqvFuoVEfHqzQxRPOGi.jpg" alt="300">
+                <div class="movie-info">
+                    <h3>300</h3>
+                    <p>O rei Leônidas e seus 300 guerreiros espartanos enfrentam o exército persa em uma batalha lendária.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/kTQ3J8oTTKofAVLYnds2cHUz9KO.jpg" alt="Rambo: Até o Fim">
+                <div class="movie-info">
+                    <h3>Rambo: Até o Fim</h3>
+                    <p>John Rambo sai em uma última missão para resgatar a filha de um amigo sequestrada por traficantes.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/zAoCQmTMGpAZmVWSN5d0fB5YOEu.jpg" alt="Capitão América: Guerra Civil">
+                <div class="movie-info">
+                    <h3>Capitão América: Guerra Civil</h3>
+                    <p>Os Vingadores se dividem em uma guerra interna após divergências sobre regulamentação dos heróis.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/4HkwsmXp3uzcrNIPlNEYo3hMbL8.jpg" alt="Batman: O Cavaleiro das Trevas">
+                <div class="movie-info">
+                    <h3>Batman: O Cavaleiro das Trevas</h3>
+                    <p>Batman enfrenta o Coringa, um criminoso caótico que ameaça destruir Gotham City com sua anarquia.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/ixsPIb7dIiZlrqbV1QVdqA9XWxm.jpg" alt="Gladiador">
+                <div class="movie-info">
+                    <h3>Gladiador</h3>
+                    <p>Um general romano traído busca vingança contra o imperador corrupto que matou sua família.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/l5uPlrjcVSI3z3duYeyRAP2E2D0.jpg" alt="O Exterminador do Futuro 2">
+                <div class="movie-info">
+                    <h3>O Exterminador do Futuro 2</h3>
+                    <p>Um ciborgue volta no tempo para proteger John Connor, o futuro líder da resistência humana.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://picfiles.alphacoders.com/385/385304.jpg" alt="Matrix">
+                <div class="movie-info">
+                    <h3>Matrix</h3>
+                    <p>Um hacker descobre que a realidade é uma simulação controlada por máquinas e se junta à resistência.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://www.themoviedb.org/t/p/original/kDQMkT3RVIHvE6yQlMDdsqehB9H.jpg" alt="Blade: O Caçador de Vampiros">
+                <div class="movie-info">
+                    <h3>Blade: O Caçador de Vampiros</h3>
+                    <p>Um guerreiro meio-humano meio-vampiro luta contra uma sociedade secreta de vampiros.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/thumb/2/2a/TropaDeElitePoster.jpg/250px-TropaDeElitePoster.jpg" alt="Tropa de Elite">
+                <div class="movie-info">
+                    <h3>Tropa de Elite</h3>
+                    <p>O Capitão Nascimento lidera o BOPE na luta contra o tráfico no Rio de Janeiro.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>

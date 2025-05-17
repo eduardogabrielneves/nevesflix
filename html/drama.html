@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+    <script src="../scripts/home.js"></script>
+    <title>Filmes de Drama</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html"><img src="../styles/imagens/logobranca.png" alt="Logo"></a>
+        <ul class="nav-menu">
+            <li><a href="acao.html">Ação</a></li>
+            <li><a href="comedia.html">Comédia</a></li>
+            <li><a href="drama.html">Drama</a></li>
+            <li><a href="terror.html">Terror</a></li>
+        </ul>
+        <input type="text" id="searchInput" placeholder="Pesquisar filmes..." onkeyup="filterMovies()">
+    </nav>
+
+    <div id="section1">
+        <div><h1 id="titulo">Filmes de Drama</h1></div>
+    
+        <div class="movies-container">
+            <div class="movie-card">
+                <img src="https://br.web.img2.acsta.net/medias/nmedia/18/90/16/48/20083748.jpg" alt="Um Sonho de Liberdade">
+                <div class="movie-info">
+                    <h3>Um Sonho de Liberdade</h3>
+                    <p>Preso injustamente, um homem encontra esperança e amizade enquanto planeja sua fuga da prisão de Shawshank.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img2.acsta.net/medias/nmedia/18/91/66/66/20156966.jpg" alt="À Espera de um Milagre">
+                <div class="movie-info">
+                    <h3>À Espera de um Milagre</h3>
+                    <p>Um guarda prisional forma uma conexão inesperada com um prisioneiro condenado à morte que possui um dom extraordinário.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/c/c0/ForrestGumpPoster.jpg" alt="Forrest Gump">
+                <div class="movie-info">
+                    <h3>Forrest Gump</h3>
+                    <p>A incrível jornada de um homem simples, mas com um coração gigante, que presencia eventos históricos e busca o amor de sua vida.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/2/22/Titanic_poster.jpg" alt="Titanic">
+                <div class="movie-info">
+                    <h3>Titanic</h3>
+                    <p>Um jovem casal de diferentes classes sociais vive um amor intenso a bordo do infame navio Titanic.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img2.acsta.net/pictures/19/04/10/19/44/2904073.jpg" alt="A Lista de Schindler">
+                <div class="movie-info">
+                    <h3>A Lista de Schindler</h3>
+                    <p>A história real de um empresário que salvou milhares de judeus durante o Holocausto ao empregá-los em sua fábrica.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/86/96/34/20028591.jpg" alt="À Procura da Felicidade">
+                <div class="movie-info">
+                    <h3>À Procura da Felicidade</h3>
+                    <p>Um pai solteiro enfrenta desafios extremos para construir uma vida melhor para seu filho, mantendo sua resiliência e determinação.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://ingresso-a.akamaihd.net/prd/img/movie/o-poderoso-chefao-50-anos/008274f7-a76d-484f-8b5b-1c639c2ce46b.jpg" alt="O Poderoso Chefão">
+                <div class="movie-info">
+                    <h3>O Poderoso Chefão</h3>
+                    <p>A saga da família Corleone e a ascensão de Michael Corleone no mundo do crime organizado.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+            
+            <div class="movie-card">
+                <img src="https://musicart.xboxlive.com/7/7f365100-0000-0000-0000-000000000002/504/image.jpg" alt="Coringa">
+                <div class="movie-info">
+                    <h3>Coringa</h3>
+                    <p>Um comediante fracassado se torna um dos criminosos mais temidos de Gotham enquanto sua saúde mental se deteriora.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/pictures/210/432/21043224_20130923202123729.jpg" alt="O Pianista">
+                <div class="movie-info">
+                    <h3>O Pianista</h3>
+                    <p>A história real de um talentoso pianista judeu que luta para sobreviver durante a Segunda Guerra Mundial.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/I/61vKJHwfCUL._AC_UF894,1000_QL80_.jpg" alt="Clube da Luta">
+                <div class="movie-info">
+                    <h3>Clube da Luta</h3>
+                    <p>Um homem insatisfeito com sua vida corporativa se junta a um carismático vendedor de sabão para formar um clube de luta clandestino.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/medias/nmedia/18/91/21/92/20135014.jpg" alt="Diário de uma Paixão">
+                <div class="movie-info">
+                    <h3>Diário de uma Paixão</h3>
+                    <p>Uma história de amor atemporal entre dois jovens de classes sociais diferentes, narrada por um idoso a sua esposa com Alzheimer.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

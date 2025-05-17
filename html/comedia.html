@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="icon" type="image/png" href="imagens/favicon.png">
+    <script src="../scripts/home.js"></script>
+    <title>Filmes de Comédia</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html"><img src="../styles/imagens/logobranca.png" alt="Logo"></a>
+        <ul class="nav-menu">
+            <li><a href="acao.html">Ação</a></li>
+            <li><a href="comedia.html">Comédia</a></li>
+            <li><a href="drama.html">Drama</a></li>
+            <li><a href="terror.html">Terror</a></li>
+        </ul>
+        <input type="text" id="searchInput" placeholder="Pesquisar filmes..." onkeyup="filterMovies()">
+    </nav>
+
+    <div id="section1">
+        <div><h1 id="titulo">Filmes de Comédia</h1></div>
+    
+        <div class="movies-container">
+            <div class="movie-card">
+                <img src="https://4.bp.blogspot.com/-4UoDP5yH5U0/Tgx53Cd2GKI/AAAAAAAAAFU/N7eJNkaSHKM/s1600/sebebernaocase%255B1%255D.jpg" alt="Se Beber, Não Case!">
+                <div class="movie-info">
+                    <h3>Se Beber, Não Case!</h3>
+                    <p>Quatro amigos vão a Las Vegas para uma despedida de solteiro, mas acordam sem memória e sem o noivo. Agora, precisam refazer seus passos para encontrá-lo.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/8/8b/Superbad_Poster.png" alt="Superbad">
+                <div class="movie-info">
+                    <h3>Superbad</h3>
+                    <p>Dois amigos nerds tentam organizar uma festa para impressionar as garotas, mas tudo dá errado de forma hilária.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/medias/nmedia/18/97/52/82/20534159.jpg" alt="As Branquelas">
+                <div class="movie-info">
+                    <h3>As Branquelas</h3>
+                    <p>Dois agentes do FBI se disfarçam como socialites para desmascarar um esquema de sequestro, mas a missão vira um desastre cômico.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/pictures/210/299/21029996_20130821205722213.jpg" alt="Gente Grande">
+                <div class="movie-info">
+                    <h3>Gente Grande</h3>
+                    <p>Um grupo de amigos da infância se reencontra anos depois e passa um fim de semana cheio de confusão e diversão.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/d/d1/Archormanposter.jpg" alt="O Âncora: A Lenda de Ron Burgundy">
+                <div class="movie-info">
+                    <h3>O Âncora: A Lenda de Ron Burgundy</h3>
+                    <p>Um apresentador de TV narcisista enfrenta um desafio quando uma nova e ambiciosa repórter ameaça seu status.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img3.acsta.net/c_310_420/pictures/210/542/21054207_20131030221640204.jpg" alt="Debi & Lóide">
+                <div class="movie-info">
+                    <h3>Debi & Lóide</h3>
+                    <p>Dois amigos extremamente idiotas embarcam em uma viagem para devolver uma mala misteriosa e acabam se metendo em grandes confusões.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://upload.wikimedia.org/wikipedia/pt/b/bd/Click_film.jpg" alt="Click">
+                <div class="movie-info">
+                    <h3>Click</h3>
+                    <p>Um homem descobre um controle remoto mágico que permite avançar ou pausar momentos da vida, mas aprende uma grande lição ao abusar desse poder.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/M/MV5BZjhmZTY5NGQtNDMwNS00OWY3LWJiODItZDMzYjBiNDA5ODNkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Esposa de Mentirinha">
+                <div class="movie-info">
+                    <h3>Esposa de Mentirinha</h3>
+                    <p>Um cirurgião plástico convence sua assistente a fingir ser sua ex-esposa para impressionar a mulher por quem está apaixonado.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://br.web.img2.acsta.net/pictures/20/11/06/18/07/5295242.jpg" alt="O Virgem de 40 Anos">
+                <div class="movie-info">
+                    <h3>O Virgem de 40 Anos</h3>
+                    <p>Um homem de 40 anos que nunca teve uma experiência romântica tem sua vida virada de cabeça para baixo quando seus amigos decidem ajudá-lo a mudar isso.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+
+            <div class="movie-card">
+                <img src="https://m.media-amazon.com/images/M/MV5BYTJmODEzYjctNGU5Mi00NDI4LTg1N2UtZWU3NTU1MDIzOTY1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="O Mentiroso">
+                <div class="movie-info">
+                    <h3>O Mentiroso</h3>
+                    <p>Um advogado incapaz de dizer a verdade é forçado a passar um dia inteiro sem mentir após um desejo mágico de seu filho se tornar realidade.</p>
+                    <button class="movie-btn">Assistir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
