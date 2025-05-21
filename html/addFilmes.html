@@ -11,35 +11,27 @@
 </head>
 <body>
   <nav class="navbar">
-    <a href="filmes.html"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
-    <ul class="nav-menu">
-      <li id="navUsuarios"><a href="usuarios.html">Administrador</a></li>
+    <a href="filmes.html" class="logo"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
+    <ul class="nav-menu" style="margin-right: 50px;">
+      <li id="navUsuarios"><a href="usuarios.html">Cadastro de Usúarios</a></li>
+      <li id="navUsuarios"><a href="addFilmes.html">Cadastro de Filmes</a></li>
     </ul>
-    <input type="text" id="searchInput" placeholder="Pesquisar filmes..." onkeyup="filterMovies()" />
   </nav>
-
-  <div id="section1">
-    <div>
-      <h1 id="titulo">Destaques da semana...</h1>
-    </div>
-    <div class="movies-container">
-      <!-- Aqui ficam seus cards de filmes estáticos, pode manter ou depois substituir pela lista dinâmica -->
-    </div>
-  </div>
 
   <!-- Seção administrativa de filmes -->
   <section id="admin-filmes">
     <h2>Adicionar / Editar Filme</h2>
     <form id="formFilme">
-      <label>Nome do Filme:</label><br />
-      <input type="text" name="titulo" required /><br />
-
-      <label>URL da Imagem (capa):</label><br />
-      <input type="url" name="imagem" required /><br />
-
+      <label for="titulo">Nome do Filme:</label>
+      <input type="text" id="titulo" name="titulo" required />
+    
+      <label for="imagem">URL da Imagem (capa):</label>
+      <input type="url" id="imagem" name="imagem" required />
+    
       <button type="submit" id="btnSalvarFilme">Adicionar Filme</button>
       <button type="button" id="btnCancelarFilme" style="display:none; margin-left: 10px;">Cancelar Edição</button>
     </form>
+    
 
     <h3>Filmes Cadastrados</h3>
     <ul id="listaFilmes"></ul>
