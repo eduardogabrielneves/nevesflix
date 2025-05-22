@@ -1,0 +1,248 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #000;
+  color: #eee;
+  min-height: 100vh;
+  padding-top: 70px; /* espaço para navbar fixa */
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+.navbar .logo img {
+  width: 90px;
+  height: auto;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  display: flex;
+  align-items: center;
+  color: #eee;
+}
+
+.nav-menu li#navUsuarios a {
+  color: #eee;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu li#navUsuarios a:hover {
+  background-color: #e50914;
+  box-shadow: 0 0 10px #e50914;
+}
+
+/* Título */
+h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #eee;
+  user-select: none;
+}
+
+/* Formulário cadastro */
+form#formCadastro {
+  margin: 40px auto 20px;
+  max-width: 700px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+form#formCadastro input,
+form#formCadastro select {
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 2px solid #444;
+  font-size: 16px;
+  background-color: #222;
+  color: #eee;
+  flex-grow: 1;
+  min-width: 150px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+form#formCadastro input:focus,
+form#formCadastro select:focus {
+  border-color: #e50914;
+  outline: none;
+  box-shadow: 0 0 10px #e50914;
+  background-color: #444;
+}
+
+/* Botões */
+form#formCadastro button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+form#formCadastro button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 15px 5px #ff1a1a;
+}
+
+/* Tabela */
+table {
+  width: 90%;
+  margin: 0 auto 60px;
+  border-collapse: collapse;
+  color: #eee;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6);
+}
+
+thead tr {
+  background-color: #222;
+}
+
+th, td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #444;
+  text-align: left;
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Inputs e selects dentro da tabela */
+input[type="text"],
+input[type="password"],
+select {
+  background-color: #333;
+  color: #eee;
+  border: 1.5px solid #555;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: #e50914;
+  background-color: #444;
+  outline: none;
+  box-shadow: 0 0 8px #e50914;
+}
+
+/* Botões da tabela */
+button {
+  background-color: #e50914;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  min-width: 90px;
+}
+
+button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 12px 4px #ff1a1a;
+}
+
+/* Espaçamento entre botões na célula de ações */
+td > button + button {
+  margin-left: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  form#formCadastro {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 10px 15px;
+  }
+
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  form#formCadastro {
+    max-width: 100%;
+  }
+}
+
+select {
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+  appearance: none; 
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px 16px;
+  padding-right: 40px; 
+}
+
+select:focus {
+  background-color: #444;
+  outline: none;
+  border-color: #e50914;
+  box-shadow: 0 0 10px #e50914;
+}

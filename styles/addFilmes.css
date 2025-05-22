@@ -1,0 +1,216 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo e fundo */
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #000;
+  color: #eee;
+  min-height: 100vh;
+  padding-top: 70px; /* espaço para navbar fixa */
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background-color: #1c1c1c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+.navbar .logo img {
+  width: 90px;
+  height: auto;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  display: flex;
+  align-items: center;
+  color: #eee;
+}
+
+.nav-menu li#navUsuarios a {
+  color: #eee;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu li#navUsuarios a:hover {
+  background-color: #e50914;
+  box-shadow: 0 0 10px #e50914;
+}
+
+/* Título */
+h1 {
+  font-weight: 700;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #eee;
+  user-select: none;
+}
+
+/* Formulário de cadastro de filmes */
+form#formFilme {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+form#formFilme label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #eee;
+  user-select: none;
+}
+
+form#formFilme input {
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 2px solid #444;
+  background-color: #222;
+  color: #eee;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.3s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+form#formFilme input:focus {
+  border-color: #e50914;
+  box-shadow: 0 0 10px #e50914;
+}
+
+/* Botões do formulário */
+form#formFilme button {
+  padding: 16px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  background-color: #e50914;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+
+form#formFilme button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 15px #ff1a1a;
+}
+
+/* Botão cancelar */
+#btnCancelarFilme {
+  background-color: #444;
+  width: auto;
+  padding: 16px 40px;
+  margin-left: 15px;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+#btnCancelarFilme:hover {
+  background-color: #666;
+}
+
+/* Lista de filmes em grid */
+#listaFilmes {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 60px;
+}
+
+#listaFilmes li {
+  background-color: #111;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+#listaFilmes li:hover {
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.8);
+}
+
+#listaFilmes span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #eee;
+  user-select: none;
+}
+
+#listaFilmes button {
+  background-color: #e50914;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 10px;
+  flex: 1;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  color: white;
+  border: none;
+}
+
+#listaFilmes button:hover {
+  background-color: #ff1a1a;
+  box-shadow: 0 0 10px #ff1a1a;
+}
+
+#listaFilmes li > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  form#formFilme {
+    max-width: 100%;
+  }
+  #listaFilmes {
+    grid-template-columns: 1fr;
+  }
+  #listaFilmes li {
+    padding: 15px;
+  }
+}
