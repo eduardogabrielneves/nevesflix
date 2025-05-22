@@ -4,47 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Catálogo de Filmes</title>
-  <link rel="stylesheet" href="../styles/addFilmes.css" />
+  <link rel="stylesheet" href="../styles/addFilmes.css">
   <link rel="icon" type="image/png" href="imagens/favicon.png" />
-  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
-  <script src="../scripts/script.js"></script>
 </head>
 <body>
+
   <nav class="navbar">
-    <a href="filmes.html"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
-    <ul class="nav-menu">
-      <li id="navUsuarios"><a href="usuarios.html">Administrador</a></li>
+    <a href="filmes.html" class="logo"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
+    <ul class="nav-menu" style="margin-right: 50px;">
+      <li id="navUsuarios"><a href="usuarios.html">Cadastro de Usúarios</a></li>
+      <li id="navUsuarios"><a href="addFilmes.html">Cadastro de Filmes</a></li>
     </ul>
-    <input type="text" id="searchInput" placeholder="Pesquisar filmes..." onkeyup="filterMovies()" />
   </nav>
 
-  <div id="section1">
-    <div>
-      <h1 id="titulo">Destaques da semana...</h1>
-    </div>
-    <div class="movies-container">
-      <!-- Aqui ficam seus cards de filmes estáticos, pode manter ou depois substituir pela lista dinâmica -->
-    </div>
-  </div>
+  <h1>Filmes Cadastrados</h1>
 
-  <!-- Seção administrativa de filmes -->
   <section id="admin-filmes">
-    <h2>Adicionar / Editar Filme</h2>
     <form id="formFilme">
-      <label>Nome do Filme:</label><br />
-      <input type="text" name="titulo" required /><br />
+      <label for="titulo">Nome do Filme:</label>
+      <input type="text" id="titulo" name="titulo" required />
 
-      <label>URL da Imagem (capa):</label><br />
-      <input type="url" name="imagem" required /><br />
+      <label for="imagem">URL da Imagem (capa):</label>
+      <input type="url" id="imagem" name="imagem" required />
 
       <button type="submit" id="btnSalvarFilme">Adicionar Filme</button>
-      <button type="button" id="btnCancelarFilme" style="display:none; margin-left: 10px;">Cancelar Edição</button>
+      <button type="button" id="btnCancelarFilme" style="display:none;">Cancelar Edição</button>
     </form>
 
-    <h3>Filmes Cadastrados</h3>
     <ul id="listaFilmes"></ul>
   </section>
 
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
   <script>
     const dbFilmes = new PouchDB('movies');
     let filmeEditando = null;
@@ -61,6 +51,11 @@
         titulo: formFilme.titulo.value.trim(),
         imagem: formFilme.imagem.value.trim(),
       };
+
+      if (!filmeData.titulo || !filmeData.imagem) {
+        alert('Por favor, preencha todos os campos!');
+        return;
+      }
 
       try {
         if (filmeEditando) {
@@ -102,7 +97,7 @@
           const li = document.createElement('li');
 
           const spanTitulo = document.createElement('span');
-          spanTitulo.textContent = `${f.titulo}`;
+          spanTitulo.textContent = f.titulo;
 
           const btnEditar = document.createElement('button');
           btnEditar.textContent = 'Editar';
@@ -134,9 +129,13 @@
             }
           });
 
+          const btnContainer = document.createElement('div');
+          btnContainer.appendChild(btnEditar);
+          btnContainer.appendChild(btnExcluir);
+
           li.appendChild(spanTitulo);
-          li.appendChild(btnEditar);
-          li.appendChild(btnExcluir);
+          li.appendChild(btnContainer);
+
           listaFilmes.appendChild(li);
         });
       } catch (err) {
@@ -149,20 +148,8 @@
       formFilme.imagem.value = filme.imagem || '';
     }
 
-    // Função para pesquisa - opcional, se quiser filtrar a lista de filmes cadastrados
-    function filterMovies() {
-      const filter = document.getElementById('searchInput').value.toLowerCase();
-      const items = listaFilmes.getElementsByTagName('li');
-      for (let i = 0; i < items.length; i++) {
-        const text = items[i].textContent.toLowerCase();
-        items[i].style.display = text.indexOf(filter) > -1 ? '' : 'none';
-      }
-    }
-
-    window.addEventListener('load', () => {
-      carregarFilmes();
-      // Pode chamar filterMovies() se quiser filtrar ao carregar
-    });
+    window.addEventListener('load', carregarFilmes);
   </script>
+
 </body>
 </html>

@@ -132,3 +132,121 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
 });
+
+    const dbFilmes = new PouchDB('movies');
+    let filmeEditando = null;
+
+    const formFilme = document.getElementById('formFilme');
+    const btnSalvarFilme = document.getElementById('btnSalvarFilme');
+    const btnCancelarFilme = document.getElementById('btnCancelarFilme');
+    const listaFilmes = document.getElementById('listaFilmes');
+
+    formFilme.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const filmeData = {
+        titulo: formFilme.titulo.value.trim(),
+        imagem: formFilme.imagem.value.trim(),
+      };
+
+      try {
+        if (filmeEditando) {
+          filmeData._id = filmeEditando._id;
+          filmeData._rev = filmeEditando._rev;
+          await dbFilmes.put(filmeData);
+          alert('Filme atualizado com sucesso!');
+          filmeEditando = null;
+          btnSalvarFilme.textContent = 'Adicionar Filme';
+          btnCancelarFilme.style.display = 'none';
+        } else {
+          filmeData._id = 'filme_' + Date.now();
+          await dbFilmes.put(filmeData);
+          alert('Filme adicionado com sucesso!');
+        }
+        formFilme.reset();
+        carregarFilmes();
+      } catch (err) {
+        alert('Erro ao salvar filme: ' + err.message);
+        console.error(err);
+      }
+    });
+
+    btnCancelarFilme.addEventListener('click', () => {
+      filmeEditando = null;
+      formFilme.reset();
+      btnSalvarFilme.textContent = 'Adicionar Filme';
+      btnCancelarFilme.style.display = 'none';
+    });
+
+    async function carregarFilmes() {
+      listaFilmes.innerHTML = '';
+      try {
+        const result = await dbFilmes.allDocs({ include_docs: true });
+        result.rows.forEach(row => {
+          const f = row.doc;
+          if (!f._id.startsWith('filme_')) return;
+
+          const li = document.createElement('li');
+
+          const spanTitulo = document.createElement('span');
+          spanTitulo.textContent = `${f.titulo}`;
+
+          const btnEditar = document.createElement('button');
+          btnEditar.textContent = 'Editar';
+          btnEditar.addEventListener('click', () => {
+            filmeEditando = f;
+            preencherFormulario(f);
+            btnSalvarFilme.textContent = 'Salvar Alterações';
+            btnCancelarFilme.style.display = 'inline-block';
+          });
+
+          const btnExcluir = document.createElement('button');
+          btnExcluir.textContent = 'Excluir';
+          btnExcluir.addEventListener('click', async ev => {
+            ev.stopPropagation();
+            if (confirm(`Deseja excluir o filme "${f.titulo}"?`)) {
+              try {
+                await dbFilmes.remove(f);
+                alert('Filme excluído com sucesso!');
+                if (filmeEditando && filmeEditando._id === f._id) {
+                  filmeEditando = null;
+                  formFilme.reset();
+                  btnSalvarFilme.textContent = 'Adicionar Filme';
+                  btnCancelarFilme.style.display = 'none';
+                }
+                carregarFilmes();
+              } catch (error) {
+                alert('Erro ao excluir filme: ' + error.message);
+              }
+            }
+          });
+
+          li.appendChild(spanTitulo);
+          li.appendChild(btnEditar);
+          li.appendChild(btnExcluir);
+          listaFilmes.appendChild(li);
+        });
+      } catch (err) {
+        console.error('Erro ao carregar filmes:', err);
+      }
+    }
+
+    function preencherFormulario(filme) {
+      formFilme.titulo.value = filme.titulo || '';
+      formFilme.imagem.value = filme.imagem || '';
+    }
+
+    // Função para pesquisa - opcional, se quiser filtrar a lista de filmes cadastrados
+    function filterMovies() {
+      const filter = document.getElementById('searchInput').value.toLowerCase();
+      const items = listaFilmes.getElementsByTagName('li');
+      for (let i = 0; i < items.length; i++) {
+        const text = items[i].textContent.toLowerCase();
+        items[i].style.display = text.indexOf(filter) > -1 ? '' : 'none';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      carregarFilmes();
+      // Pode chamar filterMovies() se quiser filtrar ao carregar
+    });

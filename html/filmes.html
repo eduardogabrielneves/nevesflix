@@ -16,13 +16,12 @@
 
 <body>
   <nav class="navbar">
-    <a href="filmes.html"><img src="../styles/imagens/logobranca.png" alt="Logo"></a>
+    <a href="filmes.html" class="logo"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
     <ul class="nav-menu">
-      <li id="navUsuarios"><a href="usuarios.html">Administrador</a>
-      <div class="container-search">
-        <li><label for="categoria">Filtrar por Categoria:</label></li>
-        <li><select id="categoria" onchange="filtrarFilmes()"></li>
-          <option value="todas">Todas</option>
+      <li id="navUsuarios"><a href="usuarios.html">Administrador</a></li>
+      <li class="filter-search">
+        <select id="categoria" onchange="filtrarFilmes()">
+          <option value="todas">Gêneros</option>
           <option value="Ficção Científica">Ficção Científica</option>
           <option value="Ação">Ação</option>
           <option value="Drama">Drama</option>
@@ -33,11 +32,10 @@
           <option value="Aventura">Aventura</option>
         </select>
         <input type="search" id="pesquisa" placeholder="Digite sua pesquisa..." />
-      </div>
       </li>
     </ul>
   </nav>
-
+  
 
   <div class="movies-container">
 
