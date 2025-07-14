@@ -1,5 +1,28 @@
 const db = new PouchDB('usuarios');
 
+function criarAdminPadrao() {
+  const adminUser = {
+    _id: 'admin',
+    password: 'admin',
+    admin: true,
+    plano: 'Premium'
+  };
+
+  db.put(adminUser).then(() => {
+    console.log('Usuário "admin" criado como administrador com sucesso!');
+  }).catch(err => {
+    if (err.name === 'conflict') {
+      console.log('Usuário administrador "admin" já existe. Nenhuma ação necessária.');
+    } else {
+      console.error('Ocorreu um erro ao tentar criar o usuário admin:', err);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  criarAdminPadrao();
+});
+
 async function cadastrarUsuario(username, password) {
     try {
         const user = {

@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Carrega todos os usuários do banco de dados e os exibe na tabela.
      */
+
+    
     async function carregarUsuarios() {
         try {
             const result = await db.allDocs({ include_docs: true });
