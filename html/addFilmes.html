@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerenciar Filmes - Nevesflix</title>
+    <link rel="stylesheet" href="../styles/addFilmes.css">
+    <link rel="icon" type="image/png" href="../styles/imagens/icone.png" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="filmes.html" class="logo"><img src="../styles/imagens/logobranca.png" alt="Logo" /></a>
+        <ul class="nav-menu">
+            <li><a href="usuarios.html">Gerenciar Usuários</a></li>
+            <li><a href="addFilmes.html">Gerenciar Filmes</a></li>
+        </ul>
+    </nav>
+
+    <h1>Gerenciar Filmes</h1>
+
+    <section id="admin-filmes">
+        <form id="formFilme">
+            <label for="titulo">Nome do Filme:</label>
+            <input type="text" id="titulo" name="titulo" required />
+            
+            <label for="imagem">URL da Imagem (capa):</label>
+            <input type="url" id="imagem" name="imagem" required />
+            
+            <label for="genero">Gênero:</label>
+            <select id="genero" name="genero" required>
+                <option value="Ação">Ação</option>
+                <option value="Aventura">Aventura</option>
+                <option value="Crime">Crime</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Ficção Científica">Ficção Científica</option>
+                <option value="Romance">Romance</option>
+                <option value="Suspense">Suspense</option>
+            </select>
+
+            <label for="ano">Ano de Lançamento:</label>
+            <input type="number" id="ano" name="ano" placeholder="Ex: 2024" required min="1888" max="2030" />
+            
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+
+            <label for="trailer">URL do Trailer (YouTube):</label>
+            <input type="url" id="trailer" name="trailer" placeholder="Cole a URL normal do vídeo aqui" required>
+            
+            <button type="submit" id="btnSalvarFilme">Adicionar Filme</button>
+            <button type="button" id="btnCancelarFilme" style="display:none;">Cancelar Edição</button>
+        </form>      
+
+        <table id="tabelaFilmes">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Gênero</th>
+                    <th>Ano</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@7.3.1/dist/pouchdb.min.js"></script>
+    <script>
+        const dbFilmes = new PouchDB('movies');
+        // Variável para guardar o filme que está sendo editado
+        let filmeEditando = null;
+
+        const formFilme = document.getElementById('formFilme');
+        const btnSalvarFilme = document.getElementById('btnSalvarFilme');
+        const btnCancelarFilme = document.getElementById('btnCancelarFilme');
+        const tabelaFilmesBody = document.querySelector('#tabelaFilmes tbody');
+
+        const filmesIniciais = [
+            { _id: 'filme_1', titulo: 'Duna: Parte 2', imagem: 'https://ingresso-a.akamaihd.net/prd/img/movie/duna-parte-2/3971d5d6-702d-40d8-b990-872d4ffe3e32.webp', genero: 'Ficção Científica', ano: '2024', descricao: 'Paul Atreides se une a Chani e aos Fremen enquanto busca vingança contra os conspiradores que destruíram sua família.', trailer: 'https://www.youtube.com/watch?v=U2Qp5pL3ovA' },
+            { _id: 'filme_2', titulo: 'Oppenheimer', imagem: 'https://www.universalpics.com.br/tl_files/content/movies/oppenheimer/posters/01.jpg', genero: 'Drama', ano: '2023', descricao: 'A história do cientista americano J. Robert Oppenheimer e seu papel no desenvolvimento da bomba atômica.', trailer: 'https://www.youtube.com/watch?v=F3OxA9Cz17A' },
+            { _id: 'filme_3', titulo: 'Homem-Aranha: Através do Aranhaverso', imagem: 'https://musicart.xboxlive.com/7/10116700-0000-0000-0000-000000000002/504/image.jpg', genero: 'Ação', ano: '2023', descricao: 'Miles Morales é catapultado através do Multiverso, onde ele encontra uma equipe de Pessoas-Aranha.', trailer: 'https://www.youtube.com/watch?v=gt_fAE1Eg2Q' },
+            { _id: 'filme_4', titulo: 'Barbie', imagem: 'https://br.web.img3.acsta.net/pictures/23/06/21/21/10/1335465.jpg', genero: 'Fantasia', ano: '2023', descricao: 'Uma boneca Barbie sofre uma crise que a leva a questionar seu mundo e sua existência.', trailer: 'https://www.youtube.com/watch?v=Ujs1_q_f-24' },
+            { _id: 'filme_5', titulo: 'Guardiões da Galáxia Vol. 3', imagem: 'https://lumiere-a.akamaihd.net/v1/images/bra_1_2991d5a3.jpeg', genero: 'Aventura', ano: '2023', descricao: 'Peter Quill reúne sua equipe para defender o universo e proteger um dos seus.', trailer: 'https://www.youtube.com/watch?v=d1yNc9skS4E' },
+            { _id: 'filme_6', titulo: 'John Wick 4: Baba Yaga', imagem: 'https://media.fstatic.com/0cVk-4CMJgcS_9-CI_KNr7yBGMw=/322x478/smart/filters:format(webp)/media/movies/covers/2023/03/cats_ECulyGw.jpg', genero: 'Ação', ano: '2023', descricao: 'John Wick descobre um caminho para derrotar a Alta Cúpula.', trailer: 'https://www.youtube.com/watch?v=5-3A2sJnsXw' },
+            { _id: 'filme_7', titulo: 'Super Mario Bros. O Filme', imagem: 'https://br.web.img2.acsta.net/pictures/23/04/03/19/45/2854005.jpg', genero: 'Aventura', ano: '2023', descricao: 'Mario parte em uma aventura pelo Reino Cogumelo para encontrar seu irmão Luigi.', trailer: 'https://www.youtube.com/watch?v=cDNkh5Wyb-s' },
+            { _id: 'filme_8', titulo: 'A Pequena Sereia', imagem: 'https://lumiere-a.akamaihd.net/v1/images/04a_scallop_dompayoff_1sht_bra_v2_06c57418.png', genero: 'Fantasia', ano: '2023', descricao: 'A filha mais nova do Rei Tritão faz um acordo com uma bruxa do mar para trocar sua voz por pernas humanas.', trailer: 'https://www.youtube.com/watch?v=i-S2zt2tF3A' },
+            { _id: 'filme_9', titulo: 'Missão: Impossível 7', imagem: 'https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2023/05/17/41860271-missionimpossibledeadreckoningpartonever2xlg.jpg', genero: 'Ação', ano: '2023', descricao: 'Ethan Hunt e sua equipe da IMF devem rastrear uma nova arma aterrorizante que ameaça toda a humanidade.', trailer: 'https://www.youtube.com/watch?v=F-yL0c_2g0E' },
+            { _id: 'filme_10', titulo: 'Elementos', imagem: 'https://lumiere-a.akamaihd.net/v1/images/elemental_bport_765442cf.png', genero: 'Fantasia', ano: '2023', descricao: 'Em uma cidade onde os residentes de fogo, água, terra e ar vivem juntos, eles descobrem o quanto têm em comum.', trailer: 'https://www.youtube.com/watch?v=hXzcyx9V0xw' }
+        ];
+
+        // --- FUNÇÕES ---
+
+        /**
+         * Verifica se o banco de dados de filmes está vazio e, se estiver,
+         * adiciona os filmes da lista 'filmesIniciais'.
+         */
+        async function popularDadosIniciais() {
+            try {
+                const info = await dbFilmes.info();
+                if (info.doc_count === 0) {
+                    await dbFilmes.bulkDocs(filmesIniciais);
+                }
+            } catch (err) {
+                console.error('Erro ao popular o banco de dados inicial:', err);
+            }
+        }
+        
+        /**
+         * Limpa o formulário e redefine os botões para o estado inicial.
+         */
+        function limparFormulario() {
+            formFilme.reset();
+            filmeEditando = null;
+            btnSalvarFilme.textContent = 'Adicionar Filme';
+            btnCancelarFilme.style.display = 'none';
+        }
+
+        /**
+         * Preenche o formulário com os dados de um filme para edição.
+         * @param {object} filme - O objeto do filme a ser editado.
+         */
+        function preencherFormulario(filme) {
+            formFilme.titulo.value = filme.titulo;
+            formFilme.imagem.value = filme.imagem;
+            formFilme.genero.value = filme.genero;
+            formFilme.ano.value = filme.ano;
+            formFilme.descricao.value = filme.descricao;
+            formFilme.trailer.value = filme.trailer;
+            
+            filmeEditando = filme;
+            btnSalvarFilme.textContent = 'Salvar Alterações';
+            btnCancelarFilme.style.display = 'inline-block';
+            window.scrollTo({ top: 0, behavior: 'smooth' }); 
+        }
+
+        /**
+         * Carrega todos os filmes do banco de dados e os exibe na tabela.
+         */
+        async function carregarFilmesNaTabela() {
+            tabelaFilmesBody.innerHTML = ''; // Limpa a tabela antes de carregar
+            try {
+                const result = await dbFilmes.allDocs({ include_docs: true });
+                result.rows.forEach(item => {
+                    const filme = item.doc;
+                    
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td data-label="Título">${filme.titulo}</td>
+                        <td data-label="Gênero">${filme.genero}</td>
+                        <td data-label="Ano">${filme.ano}</td>
+                        <td data-label="Ações"></td>
+                    `;
+
+                    const tdAcoes = tr.querySelector('td:last-child');
+                    
+                    // Botão de Editar
+                    const btnEditar = document.createElement('button');
+                    btnEditar.textContent = 'Editar';
+                    btnEditar.className = 'btn-edit';
+                    btnEditar.onclick = () => preencherFormulario(filme);
+                    
+                    // Botão de Excluir
+                    const btnExcluir = document.createElement('button');
+                    btnExcluir.textContent = 'Excluir';
+                    btnExcluir.className = 'btn-delete';
+                    btnExcluir.onclick = async () => {
+                        if (confirm(`Tem certeza que deseja excluir o filme "${filme.titulo}"?`)) {
+                            try {
+                                await dbFilmes.remove(filme);
+                                await carregarFilmesNaTabela(); // Recarrega a tabela
+                            } catch (err) {
+                                alert('Erro ao excluir filme: ' + err.message);
+                            }
+                        }
+                    };
+
+                    tdAcoes.appendChild(btnEditar);
+                    tdAcoes.appendChild(btnExcluir);
+                    tabelaFilmesBody.appendChild(tr);
+                });
+            } catch (err) {
+                console.error('Erro ao carregar filmes:', err);
+            }
+        }
+
+        // Evento de envio do formulário (Adicionar ou Salvar Edição)
+        formFilme.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Impede o recarregamento da página
+
+            // Coleta os dados do formulário
+            const dadosFilme = {
+                titulo: formFilme.titulo.value.trim(),
+                imagem: formFilme.imagem.value.trim(),
+                genero: formFilme.genero.value,
+                ano: formFilme.ano.value,
+                descricao: formFilme.descricao.value.trim(),
+                trailer: formFilme.trailer.value.trim()
+            };
+
+            try {
+                if (filmeEditando) {
+                    // Se estiver editando, atualiza o filme existente
+                    dadosFilme._id = filmeEditando._id;
+                    dadosFilme._rev = filmeEditando._rev; // O _rev é necessário para o PouchDB atualizar
+                    await dbFilmes.put(dadosFilme);
+                    alert('Filme atualizado com sucesso!');
+                } else {
+                    // Se não, cria um novo filme com um ID único
+                    dadosFilme._id = 'filme_' + Date.now();
+                    await dbFilmes.put(dadosFilme);
+                    alert('Filme adicionado com sucesso!');
+                }
+                limparFormulario();
+                await carregarFilmesNaTabela();
+            } catch (err) {
+                alert('Erro ao salvar filme: ' + err.message);
+            }
+        });
+
+        // Evento do botão de cancelar edição
+        btnCancelarFilme.addEventListener('click', limparFormulario);
+
+        // --- INICIALIZAÇÃO ---
+
+        // Função que roda quando a página é totalmente carregada
+        window.addEventListener('load', async () => {
+             // Verifica se o usuário logado é admin
+            const isAdmin = sessionStorage.getItem('adminLogado') === 'true';
+            if (!isAdmin) {
+                alert('Acesso negado. Você precisa ser um administrador para acessar esta página.');
+                window.location.href = 'filmes.html'; // Redireciona para a página de filmes
+                return;
+            }
+            
+            await popularDadosIniciais();
+            await carregarFilmesNaTabela();
+        });
+    </script>
+</body>
+</html>
