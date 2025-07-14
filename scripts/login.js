@@ -45,7 +45,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
     const valido = await validarLogin(username, password);
 
     if (valido) {
-        window.location.href = '../html/filmes.html';
+        window.location.href = 'html/filmes.html';
     } else {
         alert('Usuário ou senha inválidos');
     }
